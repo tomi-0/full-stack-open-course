@@ -55,4 +55,8 @@ const Hello = (props) => {
 // we can also return an array of elements rather them wrapping
 // them all in one tag i.e. fragments <> </>
 
+// we can destructure an array 
+// const t = [1, 2, 3, 4, 5]
+// const [first, second, ...rest] = t
+
 export default App
