@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 
 // adding code to main branch
 
@@ -16,6 +15,7 @@ function App() {
     <>
       {/* sends an object as an argument */}
       <Hello name="Rosemary" age={b}/>
+      <Hello2 name="Bill" age={20}/>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -61,4 +61,23 @@ const Hello = (props) => {
 // const t = [1, 2, 3, 4, 5]
 // const [first, second, ...rest] = t
 
-export default App
+// we can also destructure within the function parameters
+const Hello2 = ({name, age}) => {
+  // destructures an objects properties for us into variables
+  // const {name, age} = props
+  return (
+    <div>
+      <p>Hello {name}, you are {age} years old.</p>
+    </div>
+  )
+}
+
+const App2 = (props) => {
+  const {counter} = props
+  return (
+    <div>Counter: {counter}</div>
+  )
+
+}
+
+export default App2
