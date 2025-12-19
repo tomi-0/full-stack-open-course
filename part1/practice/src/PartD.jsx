@@ -44,11 +44,21 @@ const App2 = () => {
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
   const [allClicks, setClicks] = useState([])
+  const [total, setTotal] = useState(0)
 
   //When the left button is clicked, we add the letter L to the allClicks array
   const handleLeftClick = () => {
     setClicks(allClicks.concat('L'))
+    //  by calling setLeft(left + 1), the old value persists despite the update.
+    // updating state is asynchronous
+
+    /* --- Could use this instead
+      const updatedLeft = left + 1
+      setLeft(updatedLeft)
+      setTotal(updatedLeft + right) 
+    */
     setLeft(left + 1)
+    setTotal(total + 1)
   }
   // can use .push() but don't do this. As mentioned previously, 
   // the state of React components, like allClicks, must not be mutated directly.
@@ -56,6 +66,7 @@ const App2 = () => {
   const handleRightClick = () => {
     setClicks(allClicks.concat('R'))
     setRight(right + 1)
+    setTotal(total + 1)
   }
 
   return (
@@ -65,6 +76,7 @@ const App2 = () => {
       <button onClick={handleRightClick}>Right</button>
       {right}
       <p>Clicks: {allClicks.join(' ')}</p>
+      <p>Total: {total}</p>
     </div>
   )
 
