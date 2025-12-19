@@ -60,6 +60,10 @@ const App2 = () => {
     setLeft(left + 1)
     setTotal(total + 1)
   }
+
+  // debugger - allows us to inspect variable values
+
+
   // can use .push() but don't do this. As mentioned previously, 
   // the state of React components, like allClicks, must not be mutated directly.
 
@@ -72,15 +76,38 @@ const App2 = () => {
   return (
     <div>
       {left}
-      <button onClick={handleLeftClick}>Left</button>
-      <button onClick={handleRightClick}>Right</button>
+      <Button label="Left" handleClick={handleLeftClick} />
+      <Button label="Right" handleClick={handleRightClick} />
       {right}
-      <p>Clicks: {allClicks.join(' ')}</p>
+      <History allClicks={allClicks} />
       <p>Total: {total}</p>
     </div>
   )
+}
 
 
+// conditional rendering
+const History = ({ allClicks }) => {
+  if (allClicks.length === 0) {
+    return (
+      <div>
+        No clicks have been made yet
+      </div>
+    )
+  }
+  return (
+    <div>
+      Button Press History: {allClicks.join(' ')}
+    </div>
+  )
+}
+
+const Button = ({label, handleClick}) => {
+  return (
+    <button onClick={handleClick}>
+      {label}
+    </button>
+  )
 }
 
 export default App2
