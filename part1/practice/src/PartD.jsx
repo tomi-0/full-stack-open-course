@@ -83,7 +83,7 @@ const App2 = () => {
     setValue(val)
   }
 
-
+  // NEVER define components inside of other components.
   return (
     <div>
       {left}
