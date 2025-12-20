@@ -41,6 +41,10 @@ const App = () => {
 }
 
 const App2 = () => {
+  // hooks MUST NOT be called from inside of a loop, 
+  // a conditional expression, or any place that is not a function defining a component.
+  // ensure that the hooks are always called in the same order
+
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
   const [allClicks, setClicks] = useState([])
@@ -73,14 +77,26 @@ const App2 = () => {
     setTotal(total + 1)
   }
 
+  const [value, setValue] = useState(0)
+  const setToValue = (val) => () => {
+    console.log('New value: ',val)
+    setValue(val)
+  }
+
+
   return (
     <div>
       {left}
+      
       <Button label="Left" handleClick={handleLeftClick} />
       <Button label="Right" handleClick={handleRightClick} />
       {right}
       <History allClicks={allClicks} />
       <p>Total: {total}</p>
+
+      {/* we can also use fucntions that return functions by calling it with some argument */}
+      <button onClick={setToValue(value + 1)}>Increment</button>
+      {value}
     </div>
   )
 }
