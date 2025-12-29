@@ -1,6 +1,11 @@
-import ReactDOM from 'react-dom/client'
+// module react-dom/client is placed into the variable ReactDOM
+import ReactDOM from 'react-dom/client' 
+
+// module that defines the main component of the app is placed into the variable App
 import App from './App.jsx'
 import React from "react";
+
+import App2 from './App2.jsx'
 
 
 const notes = [
@@ -21,6 +26,11 @@ const notes = [
   }
 ]
 
+/*
 ReactDOM.createRoot(document.getElementById('root')).render(
     <App notes={notes} />
-)
+) */
+
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <App2 />
+  )
